@@ -10,10 +10,10 @@ import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
 
-    CANSparkMax rightLeaderMotor, rightFollowerMotor, leftLeaderMotor, leftFollowerMotor;
-    CANEncoder rightEncoder, leftEncoder;
-    DifferentialDrive differentialDrive;
-    AHRS gyro;
+    private CANSparkMax rightLeaderMotor, rightFollowerMotor, leftLeaderMotor, leftFollowerMotor;
+    private CANEncoder rightEncoder, leftEncoder;
+    private DifferentialDrive differentialDrive;
+    private AHRS gyro;
 
     public DriveTrain() {
         rightLeaderMotor = new CANSparkMax(Constants.RLM, CANSparkMaxLowLevel.MotorType.kBrushless);
