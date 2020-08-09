@@ -21,11 +21,17 @@ public class Climber extends SubsystemBase{
         followerTalon.follow(leaderTalon);
     }
 
+    /*
+    Changing talons speed by demand.    
+    */
     public void setLifterSpeed(double demand) {
         leaderTalon.set(ControlMode.PercentOutput, demand);
     }
 
-    public void setHungerStat(boolean value) {
+    /*
+    Changing double solenoid stat (open / close).
+    */
+    public void setHangerStat(boolean value) {
         doubleSolenoid.set(value? Value.kForward : Value.kReverse);
     }
 
