@@ -18,9 +18,9 @@ package frc.robot;
 public final class Constants {
     public static final class ClimberConstants {
         public static final int HANGER_FWD = 1;
-        public static int HANGER_REV = 2;
-        public static int LEADER_LIFTER_ID = 1;
-        public static int FOLLOWER_LIFTER_ID = 2;
+        public static final int HANGER_REV = 2;
+        public static final int LEADER_LIFTER_ID = 1;
+        public static final int FOLLOWER_LIFTER_ID = 2;
     }
 
 }
