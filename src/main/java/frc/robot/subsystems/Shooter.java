@@ -11,9 +11,9 @@ public class Shooter extends SubsystemBase {
   CANEncoder encoder;
 
 
-  public Shooter(CANSparkMax m) {
-    this.motor = m;
-    this.encoder = m.getEncoder();
+  public Shooter(int port) {
+    this.motor = new CANSparkMax(port, null);
+    this.encoder = motor.getEncoder();
   }
 
   public void setSpeed(double speed) {
