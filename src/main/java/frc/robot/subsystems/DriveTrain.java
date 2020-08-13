@@ -17,11 +17,11 @@ public class DriveTrain extends SubsystemBase {
 
     public DriveTrain() {
         rightLeaderMotor = new CANSparkMax(DriveConstants.RIGHT_LEADER_ID, MotorType.kBrushless);
-        rightFollowerMotor = new CANSparkMax(DriveConstants.RFM, MotorType.kBrushless);
+        rightFollowerMotor = new CANSparkMax(DriveConstants.RIGHT_FOLLOWER_ID, MotorType.kBrushless);
         rightFollowerMotor.follow(rightLeaderMotor);
 
-        leftLeaderMotor = new CANSparkMax(DriveConstants.LLM, MotorType.kBrushless);
-        leftFollowerMotor = new CANSparkMax(DriveConstants.LFM, MotorType.kBrushless);
+        leftLeaderMotor = new CANSparkMax(DriveConstants.LEFT_LEADER_ID, MotorType.kBrushless);
+        leftFollowerMotor = new CANSparkMax(DriveConstants.LEFT_FOLLOWER_ID, MotorType.kBrushless);
         rightFollowerMotor.follow(leftLeaderMotor);
 
         rightEncoder = rightLeaderMotor.getAlternateEncoder();
