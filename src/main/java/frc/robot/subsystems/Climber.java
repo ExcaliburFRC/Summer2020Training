@@ -2,39 +2,39 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+import frc.robot.Constants.ClimberConstants;
 
 
-public class Climber extends SubsystemBase{
-    
-    public static DoubleSolenoid doubleSolenoid;
-    public static TalonSRX leaderTalon, followerTalon;
+public class Climber extends SubsystemBase {
+
+    private DoubleSolenoid hanger;
+    public static TalonSRX leaderLifter, followerTalon;
 
     public Climber() {
-        doubleSolenoid = new DoubleSolenoid(Constants.ClimberDoubleSolenoied1, Constants.ClimberDoubleSolenoied2);
-        leaderTalon = new TalonSRX(Constants.ClimberTalonSRX1);
-        followerTalon = new TalonSRX(Constants.ClimberTalonSRX2);
-        followerTalon.follow(leaderTalon);
+        hanger = new DoubleSolenoid(ClimberConstants.HANGER_FWD, ClimberConstants.HANGER_REV);
+        leaderLifter = new TalonSRX(ClimberConstants.LEADER_LIFTER_ID);
+        followerTalon = new TalonSRX(ClimberConstants.FOLLOWER_LIFTER_ID);
+        followerTalon.follow(leaderLifter);
     }
 
     /*
     Changing talons speed by demand.    
     */
     public void setLifterSpeed(double demand) {
-        leaderTalon.set(ControlMode.PercentOutput, demand);
+        leaderLifter.set(ControlMode.PercentOutput, demand);
     }
 
     /*
-    Changing double solenoid stat (open / close).
+    Changing double solenoid state (open / close).
     */
-    public void setHangerStat(boolean value) {
-        doubleSolenoid.set(value? Value.kForward : Value.kReverse);
+    public void setHangerState(boolean value) {
+        hanger.set(value ? Value.kForward : Value.kReverse);
     }
 
     @Override
-    public void periodic() {}
+    public void periodic() {
+    }
 }
