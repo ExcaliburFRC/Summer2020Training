@@ -3,10 +3,10 @@ package frc.robot.subsystems;
 import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
+import frc.robot.Constants.DriveConstants;
 
 public class DriveTrain extends SubsystemBase {
 
@@ -16,12 +16,12 @@ public class DriveTrain extends SubsystemBase {
     private AHRS gyro;
 
     public DriveTrain() {
-        rightLeaderMotor = new CANSparkMax(Constants.RLM, CANSparkMaxLowLevel.MotorType.kBrushless);
-        rightFollowerMotor = new CANSparkMax(Constants.RFM, CANSparkMaxLowLevel.MotorType.kBrushless);
+        rightLeaderMotor = new CANSparkMax(DriveConstants.RIGHT_LEADER_ID, MotorType.kBrushless);
+        rightFollowerMotor = new CANSparkMax(DriveConstants.RFM, MotorType.kBrushless);
         rightFollowerMotor.follow(rightLeaderMotor);
 
-        leftLeaderMotor = new CANSparkMax(Constants.LLM, CANSparkMaxLowLevel.MotorType.kBrushless);
-        leftFollowerMotor = new CANSparkMax(Constants.LFM, CANSparkMaxLowLevel.MotorType.kBrushless);
+        leftLeaderMotor = new CANSparkMax(DriveConstants.LLM, MotorType.kBrushless);
+        leftFollowerMotor = new CANSparkMax(DriveConstants.LFM, MotorType.kBrushless);
         rightFollowerMotor.follow(leftLeaderMotor);
 
         rightEncoder = rightLeaderMotor.getAlternateEncoder();
