@@ -1,35 +1,35 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANSparkMax;
-
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.revrobotics.*;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ShooterConstants;
 
 public class Shooter extends SubsystemBase {
-  CANSparkMax motor;
-  CANEncoder encoder;
+    private CANSparkMax motor;
+    private CANEncoder encoder;
+    private CANPIDController controller;
 
+    public Shooter() {
+        this.motor = new CANSparkMax(ShooterConstants.FLYWHEEL_ID, MotorType.kBrushless);
+        this.encoder = motor.getEncoder();
+        this.controller = motor.getPIDController();
+    }
 
-  public Shooter(int port) {
-    this.motor = new CANSparkMax(port, null);
-    this.encoder = motor.getEncoder();
-  }
+    public void setVelocityTarget(double speed) {
+        controller.setReference(speed, ControlType.kVelocity);
+    }
 
-  public void setSpeed(double speed) {
-    motor.set(speed);
-  }
+    public void stopFlywheel() {
+        motor.set(0.0);
+    }
 
-  public double getSpeed() {
-    return motor.get();
-  }
+    public double getVelocity() {
+        return encoder.getVelocity();
+    }
 
-  public int getEncoderCPR(){
-    return encoder.getCountsPerRevolution();
-  }
+    @Override
+    public void periodic() {
 
-  @Override
-  public void periodic() {
-    SmartDashboard.putNumber("CPR", getEncoderCPR());
-  }
+    }
 }
