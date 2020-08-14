@@ -7,12 +7,11 @@
 
 package frc.robot.commands.ShooterCommands;
 
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * An AccelerateToSpeed command that uses a shooter subsystem.
  */
 public class AccelerateToSpeed extends CommandBase {
   private final Shooter shooter;
@@ -20,7 +19,7 @@ public class AccelerateToSpeed extends CommandBase {
   private double range;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new AccelerateToSpeed.
    *
    * @param shooter The subsystem used by this command.
    */
@@ -31,7 +30,7 @@ public class AccelerateToSpeed extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(s);
   }
-
+  
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
@@ -41,11 +40,6 @@ public class AccelerateToSpeed extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  }
-
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
   }
 
   // Returns true when the command should end.
@@ -59,5 +53,10 @@ public class AccelerateToSpeed extends CommandBase {
         counter = 0;
     }
     return counter > 5;
+  }
+
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {
   }
 }
