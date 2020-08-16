@@ -28,13 +28,13 @@ git push
 #### After finishing a task
 - (after committing and pushing) go to GitHub and open a pull request (PR) from your work branch to `master`
 #### Before starting a new task
-- `checkout` (change branch to) `master`
+- Change branch to `master`
 ```
-git checkout master
+git switch master
 ```
-- create a new branch (example: `newbranch`) based on `master`
+- create and switch to a new branch (example: `newbranch`) based on the current branch (should be `master`)
 ```
-git checkout -b newbranch
+git switch -c newbranch
 ```
 ### Troubleshooting
 ##### When using `checkout`
@@ -43,7 +43,7 @@ git checkout -b newbranch
 - make sure you aren't trying to `push` to the `master` branch - it's protected and cannot be pushed to directly
 - if you are pushing a new branch (example: `newbranch`, it doen't exist in `origin`. Use 
 ```
-git push --set-upstread origin newbranch
+git push --set-upstream origin newbranch
 ```
 ##### To configure Git for easier updating
 Run the following commands in a terminal/command prompt:
