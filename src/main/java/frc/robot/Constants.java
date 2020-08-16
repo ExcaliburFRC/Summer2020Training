@@ -30,5 +30,8 @@ public final class Constants {
         public static final int RIGHT_FOLLOWER_ID = 2;
         public static final int LEFT_LEADER_ID = 3;
         public static final int LEFT_FOLLOWER_ID = 4;
+        public static final int ANGLE_KP = 1;
+        public static final int ANGLE_KI = 1;
+        public static final int ANGLE_KD = 1;
     }
 }
