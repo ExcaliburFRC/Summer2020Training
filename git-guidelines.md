@@ -45,3 +45,10 @@ git checkout -b newbranch
 ```
 git push --set-upstread origin newbranch
 ```
+##### To configure Git for easier updating
+Run the following commands in a terminal/command prompt:
+```
+git config --global pull.rebase true
+git config --global rebase.autoStash true
+git config --global pull.ff true
+```
