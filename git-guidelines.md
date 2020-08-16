@@ -36,6 +36,13 @@ git switch master
 ```
 git switch -c newbranch
 ```
+##### To configure Git for easier updating
+Run the following commands in a terminal/command prompt:
+```
+git config --global pull.rebase true
+git config --global rebase.autoStash true
+git config --global pull.ff true
+```
 ### Troubleshooting
 ##### When using `checkout`
 - to successfully `checkout`, there can be no uncommitted modified files - `commit` or undo your changes
@@ -44,11 +51,4 @@ git switch -c newbranch
 - if you are pushing a new branch (example: `newbranch`, it doen't exist in `origin`. Use 
 ```
 git push --set-upstream origin newbranch
-```
-##### To configure Git for easier updating
-Run the following commands in a terminal/command prompt:
-```
-git config --global pull.rebase true
-git config --global rebase.autoStash true
-git config --global pull.ff true
 ```
