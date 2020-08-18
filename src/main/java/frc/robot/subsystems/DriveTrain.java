@@ -10,59 +10,57 @@ import frc.robot.Constants.DriveConstants;
 
 public class DriveTrain extends SubsystemBase {
 
-    private CANSparkMax rightLeaderMotor, rightFollowerMotor, leftLeaderMotor, leftFollowerMotor;
-    private CANEncoder rightEncoder, leftEncoder;
-    private DifferentialDrive differentialDrive;
-    private AHRS gyro;
+	private CANSparkMax rightLeaderMotor, rightFollowerMotor, leftLeaderMotor, leftFollowerMotor;
+	private CANEncoder rightEncoder, leftEncoder;
+	private DifferentialDrive differentialDrive;
+	private AHRS gyro;
 
-    public DriveTrain() {
-        rightLeaderMotor = new CANSparkMax(DriveConstants.RIGHT_LEADER_ID, MotorType.kBrushless);
-        rightFollowerMotor = new CANSparkMax(DriveConstants.RIGHT_FOLLOWER_ID, MotorType.kBrushless);
-        rightFollowerMotor.follow(rightLeaderMotor);
+	public DriveTrain() {
+		rightLeaderMotor = new CANSparkMax(DriveConstants.RIGHT_LEADER_ID, MotorType.kBrushless);
+		rightFollowerMotor = new CANSparkMax(DriveConstants.RIGHT_FOLLOWER_ID, MotorType.kBrushless);
+		rightFollowerMotor.follow(rightLeaderMotor);
 
-        leftLeaderMotor = new CANSparkMax(DriveConstants.LEFT_LEADER_ID, MotorType.kBrushless);
-        leftFollowerMotor = new CANSparkMax(DriveConstants.LEFT_FOLLOWER_ID, MotorType.kBrushless);
-        rightFollowerMotor.follow(leftLeaderMotor);
+		leftLeaderMotor = new CANSparkMax(DriveConstants.LEFT_LEADER_ID, MotorType.kBrushless);
+		leftFollowerMotor = new CANSparkMax(DriveConstants.LEFT_FOLLOWER_ID, MotorType.kBrushless);
+		rightFollowerMotor.follow(leftLeaderMotor);
 
-        rightEncoder = rightLeaderMotor.getAlternateEncoder();
-        leftEncoder = leftLeaderMotor.getAlternateEncoder();
+		rightEncoder = rightLeaderMotor.getAlternateEncoder();
+		leftEncoder = leftLeaderMotor.getAlternateEncoder();
 
-        differentialDrive = new DifferentialDrive(leftLeaderMotor, rightLeaderMotor);
+		differentialDrive = new DifferentialDrive(leftLeaderMotor, rightLeaderMotor);
 
-        gyro = new AHRS();
+		gyro = new AHRS();
+	}
 
-    }
+	public void arcadeDrive(double speed, double rotation) {
+		differentialDrive.arcadeDrive(speed, rotation);
+	}
 
-    public void arcadeDrive(double speed, double rotation) {
-        differentialDrive.arcadeDrive(speed, rotation);
-    }
+	public double getGyro() {
+		return gyro.getAngle();
+	}
 
-    public double getGyro() {
-        return gyro.getAngle();
-    }
+	public void resetGyro() {
+		gyro.reset();
+	}
 
-    public void resetGyro() {
-        gyro.reset();
-    }
+	public double getRightEncoder() {
+		return rightEncoder.getPosition();
+	}
 
-    public double getRightEncoder() {
-        return rightEncoder.getPosition();
-    }
+	public void resetRightEncoder() {
+		rightEncoder.setPosition(0);
+	}
 
-    public void resetRightEncoder() {
-        rightEncoder.setPosition(0);
-    }
+	public double getLeftEncoder() {
+		return leftEncoder.getPosition();
+	}
 
-    public double getLeftEncoder() {
-        return leftEncoder.getPosition();
-    }
+	public void resetLeftEncoder() {
+		leftEncoder.setPosition(0);
+	}
 
-    public void resetLeftEncoder() {
-        leftEncoder.setPosition(0);
-    }
-
-    @Override
-    public void periodic() {
-
-    }
+	@Override
+	public void periodic() {
+	}
 }

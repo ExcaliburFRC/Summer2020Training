@@ -1,6 +1,7 @@
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO" version "2020.3.2"
+    id "com.diffplug.spotless" version "5.1.1"
 }
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -70,4 +71,17 @@ repositories {
 jar {
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
     manifest edu.wpi.first.gradlerio.GradleRIOPlugin.javaManifest(ROBOT_MAIN_CLASS)
+}
+spotless {
+  java {
+    importOrder() // standard import order
+    // You probably want an empty string at the end - all of the
+    // imports you didn't specify explicitly will go there.
+
+    removeUnusedImports()
+
+    googleJavaFormat() // has its own section below
+    eclipse()          // has its own section below
+    //prettier()         // has its own section below
+  }
 }
